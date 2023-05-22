@@ -11,6 +11,10 @@
        (at-floor p2 f1)
        (at-floor p3 f8)
        (at-floor p4 f1)
+       (= (elevator-capacity slow-elev1) 2)
+       (= (elevator-capacity slow-elev2) 2)
+       (= (elevator-capacity slow-elev3) 2)
+       (= (elevator-capacity fast-elev) 3)
        
        (serves slow-elev1 f0)
        (serves slow-elev1 f1)
