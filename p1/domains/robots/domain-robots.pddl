@@ -1,5 +1,5 @@
 (define (domain robots)
-    (:requirements :strips :typing :fluents)
+    (:requirements :strips :typing)
   (:types
      location pobject robot - object
      robot-brazo - robot
@@ -8,11 +8,10 @@
   (:predicates (at-robot ?r - robot ?l - location)
 	           (at-pobject ?p - pobject ?l - location)
                (holding ?r - robot ?p - pobject)
+               (busy-r ?r - robot-brazo)
+               (busy-l ?r - robot-brazo)
                (connected ?l - location ?l1 - location)
                )
-  (:functions
-    (robot-capacity ?cap - robot-brazo)
-    )
 
   (:action MOVE
 	   :parameters (?r - robot ?l - location ?l1 - location)
@@ -21,46 +20,95 @@
 	   :effect (and (at-robot ?r ?l1)
 			        (not (at-robot ?r ?l))))
 
-  (:action PICK-UP
+  (:action PICK-UP-R
     :parameters (?r - robot-brazo ?l - location ?p - pobject)
     :precondition (and (at-robot ?r ?l)
                        (at-pobject ?p ?l)
                        (not (holding ?r ?p))
-                       (> (robot-capacity ?r) 0)
+                       (not (busy-r ?r))
                        )
     :effect (and (not (at-pobject ?p ?l))
                  (holding ?r ?p)
-                 (decrease (robot-capacity ?r) 1)))
+                 (busy-r ?r)))
 
-  (:action PUT-DOWN
-	   :parameters (?r - robot-brazo ?l - location ?p - pobject)
-	   :precondition (and (at-robot ?r ?l)
-			              (holding ?r ?p))
-	   :effect (and (not (holding ?r ?p))
-		            (at-pobject ?p ?l)
-		            (increase (robot-capacity ?r) 1)))
+  (:action PICK-UP-L
+    :parameters (?r - robot-brazo ?l - location ?p - pobject)
+    :precondition (and (at-robot ?r ?l)
+                       (at-pobject ?p ?l)
+                       (not (holding ?r ?p))
+                       (not (busy-l ?r))
+                       )
+    :effect (and (not (at-pobject ?p ?l))
+                 (holding ?r ?p)
+                 (busy-l ?r)))
+                 
+  (:action PUT-DOWN-R
+    :parameters (?r - robot-brazo ?l - location ?p - pobject)
+    :precondition (and (at-robot ?r ?l)
+                       (holding ?r ?p)
+                       (busy-r ?r)
+                       )
+    :effect (and (at-pobject ?p ?l)
+                 (not (holding ?r ?p))
+                 (not (busy-r ?r))))
+
+  (:action PUT-DOWN-L
+    :parameters (?r - robot-brazo ?l - location ?p - pobject)
+    :precondition (and (at-robot ?r ?l)
+                       (holding ?r ?p)
+                       (busy-l ?r)
+                       )
+    :effect (and (at-pobject ?p ?l)
+                 (not (holding ?r ?p))
+                 (not (busy-l ?r))))
   
-  (:action TAKE-FROM-NEST
+  (:action TAKE-FROM-NEST-R
     :parameters (?rb - robot-brazo ?rc - robot-cesta ?l - location ?p - pobject)
     :precondition (and (at-robot ?rb ?l)
                        (at-robot ?rc ?l)
                        (holding ?rc ?p)
                        (not (holding ?rb ?p))
-                       (> (robot-capacity ?rb) 0)
+                       (not (busy-r ?rb))
                        )
     :effect (and (not (holding ?rc ?p))
                  (holding ?rb ?p)
-                 (decrease (robot-capacity ?rb) 1)))
+                 (busy-r ?rb)))
+
+  (:action TAKE-FROM-NEST-L
+    :parameters (?rb - robot-brazo ?rc - robot-cesta ?l - location ?p - pobject)
+    :precondition (and (at-robot ?rb ?l)
+                       (at-robot ?rc ?l)
+                       (holding ?rc ?p)
+                       (not (holding ?rb ?p))
+                       (not (busy-l ?rb))
+                       )
+    :effect (and (not (holding ?rc ?p))
+                 (holding ?rb ?p)
+                 (busy-l ?rb)))
   
-  (:action PUT-IN-NEST
+  (:action PUT-IN-NEST-R
     :parameters (?rb - robot-brazo ?rc - robot-cesta ?l - location ?p - pobject)
     :precondition (and (at-robot ?rb ?l)
                        (at-robot ?rc ?l)
                        (holding ?rb ?p)
+                       (busy-r ?rb)
                        (not (holding ?rc ?p))
                        )
     :effect (and (not (holding ?rb ?p))
                  (holding ?rc ?p)
-                 (increase (robot-capacity ?rb) 1))
+                 (not (busy-r ?rb)))
+  )
+  
+  (:action PUT-IN-NEST-L
+    :parameters (?rb - robot-brazo ?rc - robot-cesta ?l - location ?p - pobject)
+    :precondition (and (at-robot ?rb ?l)
+                       (at-robot ?rc ?l)
+                       (holding ?rb ?p)
+                       (busy-l ?rb)
+                       (not (holding ?rc ?p))
+                       )
+    :effect (and (not (holding ?rb ?p))
+                 (holding ?rc ?p)
+                 (not (busy-l ?rb)))
   )
 )

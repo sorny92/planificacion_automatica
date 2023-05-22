@@ -10,8 +10,6 @@
         obj50 obj51 obj52 obj53 obj54 - pobject
         )
   (:init
-       (= (robot-capacity robotb-0) 2)
-       (= (robot-capacity robotb-1) 2)
        (at-robot robotb-0 l01)
        (at-robot robotc-0 l01)
        (at-robot robotb-1 l01)

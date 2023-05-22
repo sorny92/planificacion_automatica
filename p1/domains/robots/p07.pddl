@@ -7,8 +7,6 @@
         obj20 obj21 obj22 obj23 obj24 - pobject
         )
   (:init
-       (= (robot-capacity robotb-0) 2)
-       (= (robot-capacity robotb-1) 2)
        (at-robot robotb-0 l01)
        (at-robot robotc-0 l01)
        (at-robot robotb-1 l01)

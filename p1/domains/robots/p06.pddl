@@ -5,8 +5,6 @@
 	    obj0 obj1 obj2 obj3 obj4 obj5 obj6 obj7 obj8 obj9 - pobject
         )
   (:init
-       (= (robot-capacity robotb-0) 2)
-       (= (robot-capacity robotb-1) 2)
        (at-robot robotb-0 l01)
        (at-robot robotc-0 l01)
        (at-robot robotb-1 l01)

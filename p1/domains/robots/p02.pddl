@@ -7,7 +7,6 @@
             )
   (:init
        (at-robot robotb l01)
-       (= (robot-capacity robotb) 2)
        (at-robot robotc l02)
        (at-pobject obj0 l03)
        (at-pobject obj1 l04)
