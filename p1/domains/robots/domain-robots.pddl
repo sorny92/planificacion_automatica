@@ -30,16 +30,15 @@
                        )
     :effect (and (not (at-pobject ?p ?l))
                  (holding ?r ?p)
-                 (decrease (robot-capacity ?r) 1))
+                 (decrease (robot-capacity ?r) 1)))
 
   (:action PUT-DOWN
-	   :parameters (?r - robot ?l - location ?p - pobject)
+	   :parameters (?r - robot-brazo ?l - location ?p - pobject)
 	   :precondition (and (at-robot ?r ?l)
 			              (holding ?r ?p))
 	   :effect (and (not (holding ?r ?p))
 		                	(at-pobject ?p ?l)
 		                	(increase (robot-capacity ?r) 1)))
-  )
   
   (:action TAKE-FROM-NEST
     :parameters (?rb - robot-brazo ?rc - robot-cesta ?l - location ?p - pobject)
@@ -51,10 +50,9 @@
                        )
     :effect (and (not (holding ?rc ?p))
                  (holding ?rb ?p)
-                 (decrease (robot-capacity ?rb) 1))
-  )
+                 (decrease (robot-capacity ?rb) 1)))
   
-    (:action PUT-IN-NEST
+  (:action PUT-IN-NEST
     :parameters (?rb - robot-brazo ?rc - robot-cesta ?l - location ?p - pobject)
     :precondition (and (at-robot ?rb ?l)
                        (at-robot ?rc ?l)
@@ -63,6 +61,6 @@
                        )
     :effect (and (not (holding ?rb ?p))
                  (holding ?rc ?p)
-                 (increase (robot-capacity ?b) 1))
+                 (increase (robot-capacity ?rb) 1))
   )
 )
