@@ -2,13 +2,8 @@
   (:objects l01 l02 l03 l04 l05 l06 l07 l08 l09 l10 - location
 	    robotb - robot-brazo
 	    robotc - robot-cesta
-	    obj0 - pobject
-	    obj1 - pobject
-   	    obj2 - pobject
-	    obj3 - pobject
-   	    obj4 - pobject
-	    obj5 - pobject
-            )
+	    obj0 obj1 obj2 obj3 obj4 obj5 - pobject
+        )
   (:init
        (= (robot-capacity robotb) 2)
        (at-robot robotb l01)

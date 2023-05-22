@@ -37,8 +37,8 @@
 	   :precondition (and (at-robot ?r ?l)
 			              (holding ?r ?p))
 	   :effect (and (not (holding ?r ?p))
-		                	(at-pobject ?p ?l)
-		                	(increase (robot-capacity ?r) 1)))
+		            (at-pobject ?p ?l)
+		            (increase (robot-capacity ?r) 1)))
   
   (:action TAKE-FROM-NEST
     :parameters (?rb - robot-brazo ?rc - robot-cesta ?l - location ?p - pobject)
