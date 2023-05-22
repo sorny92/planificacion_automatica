@@ -11,7 +11,7 @@
                (connected ?l - location ?l1 - location)
                )
   (:functions
-    (robot-capacity ?cap - pobject)
+    (robot-capacity ?cap - robot-brazo)
     )
 
   (:action MOVE
@@ -26,11 +26,11 @@
     :precondition (and (at-robot ?r ?l)
                        (at-pobject ?p ?l)
                        (not (holding ?r ?p))
-                       (> (robot-capacity ?p) 0)
+                       (> (robot-capacity ?r) 0)
                        )
     :effect (and (not (at-pobject ?p ?l))
                  (holding ?r ?p)
-                 (decrease (robot-capacity) 1))
+                 (decrease (robot-capacity ?r) 1))
 
   (:action PUT-DOWN
 	   :parameters (?r - robot ?l - location ?p - pobject)
@@ -38,7 +38,7 @@
 			              (holding ?r ?p))
 	   :effect (and (not (holding ?r ?p))
 		                	(at-pobject ?p ?l)
-		                	(increase (robot-capacity) 1)))
+		                	(increase (robot-capacity ?r) 1)))
   )
   
   (:action TAKE-FROM-NEST
@@ -47,11 +47,11 @@
                        (at-robot ?rc ?l)
                        (holding ?rc ?p)
                        (not (holding ?rb ?p))
-                       (> (robot-capacity ?p) 0)
+                       (> (robot-capacity ?rb) 0)
                        )
     :effect (and (not (holding ?rc ?p))
                  (holding ?rb ?p)
-                 (decrease (robot-capacity) 1))
+                 (decrease (robot-capacity ?rb) 1))
   )
   
     (:action PUT-IN-NEST
@@ -63,5 +63,6 @@
                        )
     :effect (and (not (holding ?rb ?p))
                  (holding ?rc ?p)
-                 (increase (robot-capacity) 1))
+                 (increase (robot-capacity ?b) 1))
   )
+)
