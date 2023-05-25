@@ -1,0 +1,46 @@
+
+; Version LPG-td-1.4
+; Seed 28090394
+; Command line: ./LPG-td-1.4/lpg-td -o p2/domain_part3_renewable.pddl -f p2/problem_part3_renewable.pddl -n 100 -out plan -cputime 50 
+; Problem p2/problem_part3_renewable.pddl
+; Time 42.16
+; Search time 42.15
+; Parsing time 0.01
+; Mutex time 0.00
+; MakeSpan 192.00
+
+
+0.0002:   (MOVE-UP--------------------- FAST-ELEV F0 F4) [13.0000]
+13.0005:   (GET-IN P1 FAST-ELEV F4) [2.0000]
+15.0010:   (MOVE-UP--------------------- FAST-ELEV F4 F8) [13.0000]
+28.0012:   (GET-OUT P1 FAST-ELEV F8) [2.0000]
+30.0015:   (GET-IN P1 SLOW-ELEV3 F8) [2.0000]
+28.0015:   (MOVE-UP--------------------- SLOW-ELEV1 F0 F1) [12.0000]
+40.0018:   (GET-IN P4 SLOW-ELEV1 F1) [2.0000]
+42.0023:   (GET-IN P2 SLOW-ELEV1 F1) [2.0000]
+44.0028:   (MOVE-UP--------------------- SLOW-ELEV1 F1 F2) [12.0000]
+56.0030:   (GET-OUT P4 SLOW-ELEV1 F2) [2.0000]
+56.0030:   (GET-OUT P2 SLOW-ELEV1 F2) [2.0000]
+30.0018:   (GET-IN P3 FAST-ELEV F8) [2.0000]
+56.0033:   (MOVE-DOWN--------------------- FAST-ELEV F8 F2) [14.0000]
+70.0035:   (GET-IN P4 FAST-ELEV F2) [2.0000]
+72.0040:   (GET-IN P2 FAST-ELEV F2) [2.0000]
+74.0045:   (GET-OUT P3 FAST-ELEV F2) [2.0000]
+76.0050:   (MOVE-UP--------------------- FAST-ELEV F2 F10) [17.0000]
+93.0053:   (MOVE-UP--------------------- FAST-ELEV F10 F12) [11.0000]
+104.0055:   (GET-OUT P2 FAST-ELEV F12) [2.0000]
+106.0060:   (MOVE-DOWN--------------------- FAST-ELEV F12 F8) [12.0000]
+118.0063:   (GET-OUT P4 FAST-ELEV F8) [2.0000]
+120.0065:   (GET-IN P4 SLOW-ELEV3 F8) [2.0000]
+122.0070:   (MOVE-UP--------------------- SLOW-ELEV3 F8 F9) [12.0000]
+134.0073:   (GET-OUT P4 SLOW-ELEV3 F9) [2.0000]
+136.0078:   (MOVE-UP--------------------- SLOW-ELEV3 F9 F11) [20.0000]
+156.0080:   (GET-OUT P1 SLOW-ELEV3 F11) [2.0000]
+58.0035:   (GET-IN P0 SLOW-ELEV1 F2) [2.0000]
+76.0048:   (GET-IN P3 SLOW-ELEV1 F2) [2.0000]
+156.0083:   (MOVE-UP--------------------- SLOW-ELEV1 F2 F3) [12.0000]
+168.0085:   (GET-OUT P0 SLOW-ELEV1 F3) [2.0000]
+170.0090:   (MOVE-DOWN--------------------- SLOW-ELEV1 F3 F1) [20.0000]
+190.0092:   (GET-OUT P3 SLOW-ELEV1 F1) [2.0000]
+
+

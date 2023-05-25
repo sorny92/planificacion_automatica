@@ -1,5 +1,5 @@
 (define (problem p01) (:domain elevators)
-  (:objects p0 p1 p2 p3 p4 - person
+  (:objects p0 p1 p2 p3 p4 p5 p6 p7 p8 p9 - person
             f0 f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 - floor
             slow-elev1 slow-elev2 slow-elev3 - slow-elevator
             fast-elev - fast-elevator
@@ -11,20 +11,15 @@
        (at-floor p2 f1)
        (at-floor p3 f8)
        (at-floor p4 f1)
+       (at-floor p5 f1)
+       (at-floor p6 f1)
+       (at-floor p7 f1)
+       (at-floor p8 f1)
+       (at-floor p9 f1)   
        (= (elevator-capacity slow-elev1) 2)
        (= (elevator-capacity slow-elev2) 2)
        (= (elevator-capacity slow-elev3) 2)
        (= (elevator-capacity fast-elev) 3)
-       (= (total-energy-used) 0)
-       (= (move-cost slow-elev1) 3)
-       (= (move-cost slow-elev2) 3)
-       (= (move-cost slow-elev3) 3)
-       (= (move-cost fast-elev) 2)
-       (= (person-cost slow-elev1) 2)
-       (= (person-cost slow-elev2) 2)
-       (= (person-cost slow-elev3) 2)
-       (= (person-cost fast-elev) 1)
-       (= (building-energy) 100)
        
        (serves slow-elev1 f0)
        (serves slow-elev1 f1)
@@ -334,6 +329,11 @@
               (at-floor p1 f11)
               (at-floor p2 f12)
               (at-floor p3 f1)
-              (at-floor p4 f9)))
-  (:metric minimize (+ (* 2 (total-time)) total-energy-used))
+              (at-floor p4 f9)
+              (at-floor p5 f12)
+              (at-floor p6 f12)
+              (at-floor p7 f12)
+              (at-floor p8 f12)
+              (at-floor p9 f12)))
+  (:metric minimize (total-time))
 )

@@ -24,7 +24,7 @@
        (= (person-cost slow-elev2) 2)
        (= (person-cost slow-elev3) 2)
        (= (person-cost fast-elev) 1)
-       (= (building-energy) 100)
+       (= (building-energy) 40)
        
        (serves slow-elev1 f0)
        (serves slow-elev1 f1)
@@ -335,5 +335,5 @@
               (at-floor p2 f12)
               (at-floor p3 f1)
               (at-floor p4 f9)))
-  (:metric minimize (+ (* 2 (total-time)) total-energy-used))
+  (:metric minimize (total-time))
 )
